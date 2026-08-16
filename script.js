@@ -11,8 +11,39 @@ let isMusicPlaying = false;
 
 const teasingMessages = ["Hmm... tu es sûre ? 😂","Tu réfléchis encore ? 👀","Ce bouton est plus rapide que toi ! 😜","Il n'y a qu'une seule vraie bonne réponse... ✨","Bon... je crois que tu connais déjà la bonne réponse 😌"];
 const typewriterLines = ["Je voulais te préparer quelque chose de différent.","Pas un simple message.","Pas une simple photo.","Mais un petit endroit qui rassemble quelques souvenirs, quelques sourires et quelques mots que je voulais te laisser.","Alors prends quelques minutes...","Et découvre."];
-const photosList = [{"id":"p1","url":"https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80","caption":"Un souvenir que je garde précieusement.","date":"Un après-midi inoubliable"},{"id":"p2","url":"https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80","caption":"Ce fou rire partagé ensemble.","date":"Notre premier voyage"},{"id":"p3","url":"https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=80","caption":"Ce regard qui me fait toujours craquer.","date":"Une soirée magique"},{"id":"p4","url":"https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80","caption":"Quand le temps s'arrête simplement quand tu es là.","date":"Balade sous les lumières"},{"id":"p5","url":"https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&fit=crop&w=800&q=80","caption":"La douceur de nos petits moments à deux.","date":"Instant précieux"}];
-
+//const photosList = [{"id":"p1","url":"https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80","caption":"Un souvenir que je garde précieusement.","date":"Un après-midi inoubliable"},{"id":"p2","url":"https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80","caption":"Ce fou rire partagé ensemble.","date":"Notre premier voyage"},{"id":"p3","url":"https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=80","caption":"Ce regard qui me fait toujours craquer.","date":"Une soirée magique"},{"id":"p4","url":"https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80","caption":"Quand le temps s'arrête simplement quand tu es là.","date":"Balade sous les lumières"},{"id":"p5","url":"https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&fit=crop&w=800&q=80","caption":"La douceur de nos petits moments à deux.","date":"Instant précieux"}];
+const photosList = [
+  {
+    id: "p1",
+    url: "/assets/pictures/image2.jpeg",
+    caption: "Un souvenir que je garde précieusement.",
+    date: "Un après-midi inoubliable"
+  },
+  {
+    id: "p2",
+    url: "/assets/pictures/image1rire.jpg",
+    caption: "Ce fou rire partagé ensemble.",
+    date: "Notre premier voyage"
+  },
+  {
+    id: "p3",
+    url: "/assets/pictures/image6.jpg",
+    caption: "Ce regard qui me fait toujours craquer.",
+    date: "Une soirée magique"
+  },
+  {
+    id: "p4",
+    url: "/assets/pictures/finalrire.jpg",
+    caption: "Quand le temps s'arrête simplement quand tu es là.",
+    date: "Balade sous les lumières"
+  },
+  {
+    id: "p5",
+    url: "/assets/pictures/image3.jpg",
+    caption: "La douceur de nos petits moments à deux.",
+    date: "Instant précieux"
+  }
+];
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
   initParticles();
