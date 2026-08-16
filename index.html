@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Pour toi ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Confetti script -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Floating particles container -->
+  <div id="particles-container" class="particles-bg"></div>
+
+  <!-- Music toggle button -->
+  <button id="music-btn" class="music-floating-btn" aria-label="Activer/Désactiver la musique">
+    <span class="music-icon">🎵</span>
+    <span class="music-text">Musique</span>
+  </button>
+
+  <audio id="bg-audio" loop src="audio/music.mp3"></audio>
+
+  <!-- Navigation indicator -->
+  <div id="story-progress" class="story-progress">
+    <div class="progress-bar">
+      <div id="progress-fill" class="progress-fill"></div>
+    </div>
+    <span id="progress-text" class="progress-label">1 / 9</span>
+  </div>
+
+  <!-- Main story container -->
+  <main class="story-container">
+
+    <!-- PAGE 1: INTRO -->
+    <section id="page-1" class="page active">
+      <div class="glass-card text-center fade-in">
+        <div class="sparkle-badge">✨ Un moment pour nous</div>
+        <p class="sub-lead">J&#039;ai préparé quelque chose pour toi...</p>
+        <h1 class="main-heading">Mais cette fois, ce n&#039;est pas un simple message.</h1>
+        <button id="start-btn" class="btn-romantic primary-glow pulse-btn">
+          Commencer ❤️
+        </button>
+      </div>
+    </section>
+
+    <!-- PAGE 2: MESSAGE (TYPEWRITER) -->
+    <section id="page-2" class="page">
+      <div class="glass-card text-left">
+        <h2 class="section-title text-center">Pour toi...</h2>
+        <div id="typewriter-box" class="typewriter-box"></div>
+        <div class="nav-actions">
+          <button class="btn-secondary" onclick="prevPage()">← Retour</button>
+          <button id="page2-next-btn" class="btn-romantic" onclick="nextPage()">Continuer →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 3: PHOTOS & SOUVENIRS -->
+    <section id="page-3" class="page">
+      <div class="glass-card text-center">
+        <h2 class="section-title">Quelques instantanés de nous</h2>
+        <p class="section-subtitle">Chaque image raconte un fragment de notre bonheur</p>
+        
+        <div class="photo-gallery">
+          
+            <div class="gallery-item" onclick="openPhoto(0)">
+              <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Un souvenir que je garde précieusement." loading="lazy" />
+              <div class="gallery-caption">
+                <span>Un souvenir que je garde précieusement.</span>
+              </div>
+            </div>
+          
+            <div class="gallery-item" onclick="openPhoto(1)">
+              <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Ce fou rire partagé ensemble." loading="lazy" />
+              <div class="gallery-caption">
+                <span>Ce fou rire partagé ensemble.</span>
+              </div>
+            </div>
+          
+            <div class="gallery-item" onclick="openPhoto(2)">
+              <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Ce regard qui me fait toujours craquer." loading="lazy" />
+              <div class="gallery-caption">
+                <span>Ce regard qui me fait toujours craquer.</span>
+              </div>
+            </div>
+          
+            <div class="gallery-item" onclick="openPhoto(3)">
+              <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Quand le temps s&#039;arrête simplement quand tu es là." loading="lazy" />
+              <div class="gallery-caption">
+                <span>Quand le temps s&#039;arrête simplement quand tu es là.</span>
+              </div>
+            </div>
+          
+            <div class="gallery-item" onclick="openPhoto(4)">
+              <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="La douceur de nos petits moments à deux." loading="lazy" />
+              <div class="gallery-caption">
+                <span>La douceur de nos petits moments à deux.</span>
+              </div>
+            </div>
+          
+        </div>
+
+        <div class="nav-actions">
+          <button class="btn-secondary" onclick="prevPage()">← Retour</button>
+          <button class="btn-romantic" onclick="nextPage()">Nos souvenirs →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 4: TIMELINE -->
+    <section id="page-4" class="page">
+      <div class="glass-card">
+        <h2 class="section-title text-center">Le fil de notre histoire</h2>
+        <p class="section-subtitle text-center">Les étapes qui ont tout changé</p>
+        
+        <div class="timeline-container">
+          
+            <div class="timeline-card">
+              <span class="timeline-tag">Chapitre 1</span>
+              <div class="timeline-period">Le début ❤️</div>
+              <h3 class="timeline-title">Le premier regard</h3>
+              <p class="timeline-desc">Le moment où tout a commencé. Cette étincelle que je n&#039;oublierai jamais.</p>
+            </div>
+          
+            <div class="timeline-card">
+              <span class="timeline-tag">Complices</span>
+              <div class="timeline-period">Un souvenir marquant ✨</div>
+              <h3 class="timeline-title">Ce jour-là où...</h3>
+              <p class="timeline-desc">Ce jour-là où on a ri sans pouvoir s&#039;arrêter, où j&#039;ai compris à quel point tu étais unique.</p>
+            </div>
+          
+            <div class="timeline-card">
+              <span class="timeline-tag">Inoubliable</span>
+              <div class="timeline-period">Un autre moment inoubliable 🌙</div>
+              <h3 class="timeline-title">Sous les étoiles</h3>
+              <p class="timeline-desc">Et celui-là, impossible de l&#039;oublier. Nos discussions jusqu&#039;au bout de la nuit.</p>
+            </div>
+          
+            <div class="timeline-card">
+              <span class="timeline-tag">Pour toujours</span>
+              <div class="timeline-period">Aujourd&#039;hui &amp; Demain 🌹</div>
+              <h3 class="timeline-title">Et l&#039;histoire continue...</h3>
+              <p class="timeline-desc">Chaque nouveau jour avec toi est un cadeau que je chéris.</p>
+            </div>
+          
+        </div>
+
+        <div class="nav-actions">
+          <button class="btn-secondary" onclick="prevPage()">← Retour</button>
+          <button class="btn-romantic" onclick="nextPage()">Petits mots doux →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 5: PETITES PHRASES -->
+    <section id="page-5" class="page">
+      <div class="glass-card">
+        <h2 class="section-title text-center">Quelques pensées pour toi</h2>
+        <p class="section-subtitle text-center">Des vérités simples et sincères</p>
+        
+        <div class="quotes-grid">
+          
+            <div class="quote-card">
+              <span class="quote-category">Évidence</span>
+              <p class="quote-text">“Certaines personnes arrivent dans notre vie et rendent les jours ordinaires un peu plus beaux.”</p>
+              <p class="quote-note">— C&#039;est exactement ce que tu as fait dès le premier jour.</p>
+            </div>
+          
+            <div class="quote-card">
+              <span class="quote-category">Authenticité</span>
+              <p class="quote-text">“Je n&#039;ai pas besoin d&#039;une histoire parfaite. Je préfère une histoire vraie, avec ses petits moments, ses rires et ses souvenirs.”</p>
+              <p class="quote-note">— Notre histoire, avec toutes ses couleurs.</p>
+            </div>
+          
+            <div class="quote-card">
+              <span class="quote-category">Refuge</span>
+              <p class="quote-text">“Parmi tous les endroits où je pourrais être, certains sont simplement meilleurs quand tu es là.”</p>
+              <p class="quote-note">— Être avec toi est mon endroit préféré.</p>
+            </div>
+          
+        </div>
+
+        <div class="nav-actions">
+          <button class="btn-secondary" onclick="prevPage()">← Retour</button>
+          <button class="btn-romantic" onclick="nextPage()">Un petit jeu ? →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 6: MINI-JEU (BOUTON FUYANT) -->
+    <section id="page-6" class="page">
+      <div class="glass-card text-center relative-container">
+        <div class="mini-game-badge">🎮 Mini question</div>
+        <h2 class="game-question">Est-ce que tu acceptes de continuer cette petite aventure avec moi ?</h2>
+        <div id="tease-feedback" class="tease-feedback"></div>
+
+        <div class="game-buttons-area" id="game-arena">
+          <button id="yes-btn" class="btn-romantic primary-glow" onclick="handleYesClick()">
+            OUI ❤️
+          </button>
+          <button id="no-btn" class="btn-tease" onmouseover="moveNoButton()" onclick="moveNoButton()" ontouchstart="moveNoButton(event)">
+            NON 😈
+          </button>
+        </div>
+
+        <div class="nav-actions">
+          <button class="btn-secondary" onclick="prevPage()">← Retour</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 7: PETIT QUIZ -->
+    <section id="page-7" class="page">
+      <div class="glass-card">
+        <h2 class="section-title text-center">Le petit Quiz de notre couple</h2>
+        <p class="section-subtitle text-center">Pas de score sérieux, juste un grand sourire !</p>
+        
+        <div class="quiz-container">
+          
+            <div class="quiz-card" id="quiz-block-0">
+              <p class="quiz-q"><strong>1.</strong> Qui est le plus têtu entre nous deux ?</p>
+              <div class="quiz-options">
+                
+                  <button class="quiz-opt-btn" onclick="selectQuizAnswer(0, 'Vraiment ? Tu oses l&#039;avouer ? 😂')">
+                    Moi 😇
+                  </button>
+                
+                  <button class="quiz-opt-btn" onclick="selectQuizAnswer(0, 'Totalement faux ! (Bon d&#039;accord, peut-être un tout petit peu...) 😜')">
+                    Toi 🤭
+                  </button>
+                
+                  <button class="quiz-opt-btn" onclick="selectQuizAnswer(0, 'La réponse la plus diplomate et tellement vraie ! 💕')">
+                    Égalité parfaite 😂
+                  </button>
+                
+              </div>
+              <div id="quiz-reaction-0" class="quiz-reaction-msg"></div>
+            </div>
+          
+            <div class="quiz-card" id="quiz-block-1">
+              <p class="quiz-q"><strong>2.</strong> Qui dit le plus souvent &#039;J&#039;ai rien&#039; alors qu&#039;il y a clairement quelque chose ?</p>
+              <div class="quiz-options">
+                
+                  <button class="quiz-opt-btn" onclick="selectQuizAnswer(1, 'Haha coupable à 100% ! Je commence à bien te connaître 🕵️‍♂️')">
+                    Moi 🙈
+                  </button>
+                
+                  <button class="quiz-opt-btn" onclick="selectQuizAnswer(1, 'Moi ?! Jamais de la vie... ou presque ! 😂')">
+                    Toi 🙄
+                  </button>
+                
+              </div>
+              <div id="quiz-reaction-1" class="quiz-reaction-msg"></div>
+            </div>
+          
+            <div class="quiz-card" id="quiz-block-2">
+              <p class="quiz-q"><strong>3.</strong> Qui a probablement gagné cette petite guerre d&#039;amour ?</p>
+              <div class="quiz-options">
+                
+                  <button class="quiz-opt-btn" onclick="selectQuizAnswer(2, 'Tu gagnes toujours mon cœur de toute façon ! 💖')">
+                    Moi 👑
+                  </button>
+                
+                  <button class="quiz-opt-btn" onclick="selectQuizAnswer(2, 'Merci pour cette reconnaissance méritée ! 🥳')">
+                    Toi 🏆
+                  </button>
+                
+                  <button class="quiz-opt-btn" onclick="selectQuizAnswer(2, 'La plus belle des réponses. C&#039;est nous deux qui gagnons ! 🌹')">
+                    Notre amour ❤️
+                  </button>
+                
+              </div>
+              <div id="quiz-reaction-2" class="quiz-reaction-msg"></div>
+            </div>
+          
+        </div>
+
+        <div class="nav-actions">
+          <button class="btn-secondary" onclick="prevPage()">← Retour</button>
+          <button class="btn-romantic" onclick="nextPage()">La suite... →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 8: DECLARATION -->
+    <section id="page-8" class="page">
+      <div class="glass-card-dark text-center">
+        <p class="dark-intro">Et maintenant, la partie la plus importante...</p>
+        <h2 class="dark-title">Ce que mon cœur voulait te dire</h2>
+        
+        <div class="featured-photo-wrap">
+          <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Nous" class="featured-photo" />
+          <p class="featured-caption">Toi &amp; Moi, pour toujours.</p>
+        </div>
+
+        <div class="letter-content">
+          <p class="letter-p">Je ne sais pas exactement ce que l&#039;avenir nous réserve.</p><p class="letter-p">Mais je sais que tous les moments que nous avons déjà partagés ont une place particulière dans mon cœur.</p><p class="letter-p">Merci pour les rires.</p><p class="letter-p">Merci pour les souvenirs.</p><p class="letter-p">Merci pour les petits moments qui semblent parfois insignifiants mais qui deviennent finalement les plus importants.</p><p class="letter-p">Et surtout...</p><p class="letter-p">Merci d&#039;être toi.</p>
+        </div>
+
+        <div class="nav-actions">
+          <button class="btn-secondary dark-sec" onclick="prevPage()">← Retour</button>
+          <button class="btn-romantic glow-rose" onclick="nextPage()">Une dernière surprise 🌹</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 9: SURPRISE FINALE -->
+    <section id="page-9" class="page">
+      <div class="glass-card text-center final-celebration">
+        <p class="final-pre">Si tu es arrivée jusqu&#039;ici...</p>
+        <h3 class="final-main">Alors j&#039;ai une dernière chose à te dire.</h3>
+        
+        <div class="big-love-declaration">
+          Je t&#039;aime. ❤️
+        </div>
+
+        <p class="final-sub">Et je continuerai à créer de beaux souvenirs avec toi, un jour après l&#039;autre.</p>
+
+        <div class="pledge-card">
+          <p class="font-script pledge-text">Notre histoire continue...</p>
+        </div>
+
+        <div class="final-buttons">
+          <button class="btn-romantic pulse-btn" onclick="launchLoveCelebration()">
+            Pluie de cœurs & Amour 💖
+          </button>
+          <button class="btn-secondary" onclick="goToPage(1)">
+            Recommencer depuis le début 🔄
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lightbox modal for photo view -->
+  <div id="lightbox" class="lightbox" onclick="closePhoto()">
+    <button class="lightbox-close">&times;</button>
+    <img id="lightbox-img" src="" alt="Agrandissement" />
+    <p id="lightbox-caption" class="lightbox-caption"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
