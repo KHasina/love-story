@@ -101,7 +101,7 @@ function startTypewriter() {
 }
 
 // Mini Game: Runaway No button
-function moveNoButton(e) {
+/*function moveNoButton(e) {
   if (e) e.preventDefault();
   const noBtn = document.getElementById('no-btn');
   const arena = document.getElementById('game-arena');
@@ -123,6 +123,45 @@ function moveNoButton(e) {
 
   noBtn.style.transform = `translate(${randomX}px, ${randomY}px) scale(0.92)`;
 }
+*/
+
+function moveNoButton(e) {
+  if (e) e.preventDefault();
+
+  const noBtn = document.getElementById('no-btn');
+  const arena = document.getElementById('game-arena');
+  const feedback = document.getElementById('tease-feedback');
+
+  if (!noBtn || !arena) return;
+
+  noClickCount++;
+
+  // Message taquin
+  const msgIdx = (noClickCount - 1) % teasingMessages.length;
+  if (feedback) {
+    feedback.textContent = teasingMessages[msgIdx];
+  }
+
+  // Mouvement beaucoup plus grand
+  const arenaRect = arena.getBoundingClientRect();
+  const btnRect = noBtn.getBoundingClientRect();
+
+  const maxX = (arenaRect.width - btnRect.width) / 2;
+  const maxY = (arenaRect.height - btnRect.height) / 2;
+
+  // Position aléatoire très éloignée
+  const randomX = (Math.random() * 2 - 1) * maxX;
+  const randomY = (Math.random() * 2 - 1) * maxY;
+
+  // Rotation + légère variation de taille
+  const rotation = (Math.random() * 40) - 20;
+  const scale = 0.85 + Math.random() * 0.15;
+
+  noBtn.style.transition = 'transform 0.12s cubic-bezier(.17,.67,.2,1.3)';
+  noBtn.style.transform =
+    `translate(${randomX}px, ${randomY}px) rotate(${rotation}deg) scale(${scale})`;
+}
+
 
 function handleYesClick() {
   launchConfetti();
